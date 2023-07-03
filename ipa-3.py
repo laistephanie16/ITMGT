@@ -45,13 +45,14 @@ def relationship_status(from_member, to_member, social_graph):
     a=social_graph[from_member]["following"]
     b=social_graph[to_member]["following"]
     if from_member in b and to_member in a: 
-        print("friends")
+        out="friends"
     elif from_member in b and to_member not in a:
-        print("followed by")
+        out="followed by"
     elif from_member not in b and to_member in a:
-        print("follower")
+        out="follower"
     else:
-        print("no relationship")
+        out="no relationship"
+    return out 
 
 
 # In[77]:
@@ -83,20 +84,20 @@ def tic_tac_toe(board):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    out="No WINNER"
+    out="NO WINNER"
     
     for row in board: #horizontal
-        if all(letter==row[0] for letter in row): 
+        if all(letter==row[0] and letter for letter in row): 
             out=row[0]
             
     for column in range(len(board)): #vertical
-        if all(row[column]==board[0][column] for row in board):
+        if all(row[column]==board[0][column] and row[column] for row in board):
             out=board[0][column]
             
-    if all(board[0][0]==board[i][i] for i in range(len(board))): #diagonal\
+    if all(board[0][0]==board[i][i] and board[i][i] for i in range(len(board))): #diagonal\
         out=board[0][0]
-    elif all(board[i][len(board) - i - 1] == board[0][len(board)-1] for i in range(len(board))): #diagonal/
-        out=board[0][len(board)]
+    elif all(board[i][len(board) - i - 1] == board[0][len(board)-1] and board[0][len(board)-1] for i in range(len(board))): #diagonal/
+        out=board[0][len(board)-1]
         
     return out
             
