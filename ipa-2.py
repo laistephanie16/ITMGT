@@ -42,11 +42,13 @@ def shift_letter(letter, shift):
         try:
             num = ord(letter) - ord("A") +1
             num += shift
-            num = num % 26
+            if num>26:
+                num = num % 26
             out = chr(num+ord("A") -1)
             return out
         except TypeError:
             return letter
+        
         
 
 
@@ -91,13 +93,15 @@ def caesar_cipher(message, shift):
         elif letter.islower():
             num=ord(letter)-ord("a")+1
             num+=shift
-            num=num%26 
+            if num>26:
+                num=num%26 
             out=chr(num+ord("a")-1)
             new_message+=out 
         else:
             num = ord(letter) - ord("A") +1
             num += shift
-            num = num % 26
+            if num>26:
+                num = num % 26
             out = chr(num+ord("A") -1)
             new_message+=out 
     return str(new_message)
@@ -185,10 +189,10 @@ def vigenere_cipher(message, key):
     index=0
     for letter in message: 
         if letter == " ":
-            new_message+=""
+            new_message+=" "
             index+=1
-            if index>=3:
-                index=index%3
+            if index>=len(key):
+                index=index%len(key)
         else:
             num = ord(letter)-ord("A")+1 
             num+=ord(key[index])-ord("A")
@@ -196,8 +200,8 @@ def vigenere_cipher(message, key):
             out=chr(num+ord("A")-1)
             new_message+=out 
             index+=1
-            if index>=3:
-                index=index%3
+            if index>=len(key):
+                index=index%len(key)
     return str(new_message)
                 
 
