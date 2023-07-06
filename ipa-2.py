@@ -144,7 +144,8 @@ def shift_by_letter(letter, letter_shift):
         try:
             num = ord(letter) - ord("A") +1
             num += ord(letter_shift) - ord("A")
-            num = num % 26
+            if num>26:
+                num = num % 26
             out = chr(num+ord("A") -1)
             return out
         except TypeError:
@@ -196,7 +197,8 @@ def vigenere_cipher(message, key):
         else:
             num = ord(letter)-ord("A")+1 
             num+=ord(key[index])-ord("A")
-            num=num%26 
+            if num>26:
+                num = num % 26 
             out=chr(num+ord("A")-1)
             new_message+=out 
             index+=1
