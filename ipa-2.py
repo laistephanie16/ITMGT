@@ -75,18 +75,9 @@ def caesar_cipher(message, shift):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-#    new_message = ""
-#    for letter in message:
-#        if letter==" ":
-#            new_message+=letter
-#        else:
-#            new_letter = shift_letter(letter.upper(),shift)
-#            if letter.islower():
-#                new_letter = new_letter.lower()
-#            new_message+=new_letter
-#    return str(new_message)
 
     new_message = ""
+    shift=shift%26
     for letter in message: 
         if letter == " ": 
             new_message+=letter 
